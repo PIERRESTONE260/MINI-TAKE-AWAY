@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MINI TAKE-AWAY | Suivi de Commande</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+    </head>
+    <body>
+
+        <header class="navbar">
+            <a href="index.html" class="logo">
+                MINI <span>TAKE-AWAY</span>
+            </a>
+            <nav>
+                <a href="index.html">Accueil</a>
+                <a href="menu.html">Notre menu</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <a href="suivi.html" class="btn-primary" style="background: var(--dark);">
+                Suivi
+            </a>
+        </header>
+
+        <main style="padding: 50px 7%; min-height: 60vh;">
+            <div style="margin-bottom: 40px; text-align: center;">
+                <span class="tagline">ÉTAT DE VOTRE COMMANDE</span>
+                <h1 style="font-size: 38px; margin-top: 10px;">Suivi en Temps Réel</h1>
+                <p style="color: var(--text); margin-top: 5px;">Commande N° <strong>#TK-8492</strong></p>
+            </div>
+
+            <div style="max-width: 650px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                
+                <!-- Étapes de progression -->
+                <div style="display: flex; justify-content: space-between; position: relative; margin-bottom: 40px;">
+                    <div style="text-align: center; z-index: 1;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">✓</div>
+                        <span style="font-size: 13px; font-weight: bold;">Recue</span>
+                    </div>
+
+                    <div style="text-align: center; z-index: 1;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">2</div>
+                        <span style="font-size: 13px; font-weight: bold; color: var(--primary);">En préparation</span>
+                    </div>
+
+                    <div style="text-align: center; z-index: 1;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #eee; color: #aaa; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">3</div>
+                        <span style="font-size: 13px; color: var(--text);">Prête</span>
+                    </div>
+                </div>
+
+                <!-- Récapitulatif rapide -->
+                <div style="border-top: 1px solid #eee; padding-top: 25px;">
+                    <h4 style="margin-bottom: 15px;">Détails de l'estimation</h4>
+                    <p style="color: var(--text); line-height: 1.6;">
+                        ⏱️ Temps estimé avant finalisation : <strong>15 à 20 minutes</strong><br>
+                        🛵 Mode : <strong>Retrait sur place</strong>
+                    </p>
+                </div>
+
+                <div style="margin-top: 30px; text-align: center;">
+                    <a href="menu.html" class="btn-primary" style="background: var(--dark);">Retour au menu</a>
+                </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2026 MINI TAKE-AWAY</p>
+        </footer>
+
+    </body>
+</html>

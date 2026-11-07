@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MINI TAKE-AWAY | Notre Menu</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+    </head>
+    <body>
+
+        <header class="navbar">
+            <a href="index.html" class="logo">
+                MINI <span>TAKE-AWAY</span>
+            </a>
+            <nav>
+                <a href="index.html">Accueil</a>
+                <a href="menu.html">Notre menu</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <a href="panier.html" class="btn-primary">
+                Panier (0)
+            </a>
+        </header>
+
+        <main style="padding: 50px 7%;">
+            <div style="margin-bottom: 40px; text-align: center;">
+                <span class="tagline">DÉCOUVREZ NOS DÉLICES</span>
+                <h1 style="font-size: 38px; margin-top: 10px;">Notre Menu du Jour</h1>
+            </div>
+
+            <!-- Grille des produits (simulation visuelle avant connexion Supabase) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                
+                <!-- Produit 1 -->
+                <article style="background: white; border-radius: 12px; overflow: hidden; padding-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600" alt="Burger" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px;">
+                        <h3 style="margin-bottom: 8px;">Burger Classic</h3>
+                        <p style="color: var(--text); font-size: 14px; margin-bottom: 15px;">Steak haché frais, cheddar fondant, salade, sauce maison.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: bold; color: var(--primary); font-size: 18px;">$8.50</span>
+                            <a href="#" class="btn-primary" style="padding: 8px 15px; font-size: 14px;">Ajouter</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Produit 2 -->
+                <article style="background: white; border-radius: 12px; overflow: hidden; padding-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600" alt="Pizza" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px;">
+                        <h3 style="margin-bottom: 8px;">Pizza Margherita</h3>
+                        <p style="color: var(--text); font-size: 14px; margin-bottom: 15px;">Sauce tomate, mozzarella fraîche, basilic et huile d'olive.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: bold; color: var(--primary); font-size: 18px;">$10.00</span>
+                            <a href="#" class="btn-primary" style="padding: 8px 15px; font-size: 14px;">Ajouter</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Produit 3 -->
+                <article style="background: white; border-radius: 12px; overflow: hidden; padding-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" alt="Salade" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px;">
+                        <h3 style="margin-bottom: 8px;">Salade Fraîcheur</h3>
+                        <p style="color: var(--text); font-size: 14px; margin-bottom: 15px;">Légumes croquants du marché, poulet grillé, vinaigrette spéciale.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: bold; color: var(--primary); font-size: 18px;">$7.00</span>
+                            <a href="#" class="btn-primary" style="padding: 8px 15px; font-size: 14px;">Ajouter</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2026 MINI TAKE-AWAY</p>
+        </footer>
+
+    </body>
+</html>
