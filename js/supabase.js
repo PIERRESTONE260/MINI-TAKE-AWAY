@@ -1,8 +1,8 @@
 // Configuration et Initialisation du Client Supabase
 // Remplace les valeurs ci-dessous par tes identifiants du projet Supabase (disponibles dans le Dashboard Supabase > Project Settings > API)
 
-const SUPABASE_URL = "https://VOTRE_PROJECT_ID.supabase.co";
-const SUPABASE_ANON_KEY = "VOTRE_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://ratxjdybjtwswbbsangx.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJhdHhqZHlianR3c3diYnNhbmd4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQwNDQ1MDUsImV4cCI6MjEwOTYyMDUwNX0.ysMUOZbIYdbb0RGwau-6hn4TrftcrZbiNCGLOqHZSRI";
 
 // Importation / Déclaration du client Supabase
 // (Nous utiliserons la librairie officielle Supabase via CDN dans nos pages HTML)

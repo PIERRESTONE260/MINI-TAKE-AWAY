@@ -1,33 +1,65 @@
+/* --- Style du Menu Hamburger (Mobile) --- */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--dark);
+    padding: 5px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
 
+.hamburger-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Menu mobile overlay */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    padding: 80px 30px 30px 30px;
+    gap: 20px;
+    transition: right 0.4s ease-in-out;
+    z-index: 999;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav a {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-nav a:hover {
+    background: #fff5f2;
+    color: var(--primary);
+}
+
+/* Affichage du hamburger sur les écrans mobiles */
 @media (max-width: 768px) {
-
-    .navbar {
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 20px;
+    header nav {
+        display: none !important; /* Cache le menu classique sur mobile */
     }
-
-    nav {
-        width: 100%;
-        justify-content: space-between;
-        gap: 10px;
-    }
-
-    .hero {
-        grid-template-columns: 1fr;
-        padding: 45px 20px;
-    }
-
-    .hero-content h1 {
-        font-size: 36px;
-    }
-
-    .hero-image img {
-        height: 280px;
-    }
-
-    .features {
-        grid-template-columns: 1fr;
-        padding: 20px;
+    .hamburger-btn {
+        display: block !important; /* Affiche le bouton hamburger */
     }
 }

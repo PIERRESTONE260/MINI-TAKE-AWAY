@@ -23,27 +23,114 @@
             </a>
         </header>
 
-        <main style="padding: 60px 7%; min-height: 60vh; text-align: center;">
-            <div style="margin-bottom: 30px;">
+        <main style="padding: 60px 7%; min-height: 60vh;">
+            <div style="margin-bottom: 30px; text-align: center;">
                 <span class="tagline">VOTRE SÉLECTION</span>
                 <h1 style="font-size: 38px; margin-top: 10px;">Mon Panier</h1>
             </div>
 
-            <!-- État du panier vide -->
-            <div style="background: white; max-width: 600px; margin: 0 auto; padding: 50px 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                <div style="font-size: 50px; margin-bottom: 20px;">🛒</div>
-                <h3 style="margin-bottom: 15px; font-size: 22px;">Votre panier est actuellement vide</h3>
-                <p style="color: var(--text); line-height: 1.6; margin-bottom: 30px;">
-                    Vous n'avez pas encore ajouté de délicieux repas à votre panier. 
-                    Explorez notre menu pour faire votre choix !
-                </p>
-                <a href="menu.html" class="btn-primary">Découvrir le menu</a>
+            <!-- Contenu dynamique du panier -->
+            <div id="panier-conteneur" style="max-width: 800px; margin: 0 auto;">
+                <!-- Injecté par JavaScript -->
             </div>
         </main>
 
         <footer>
             <p>© 2026 MINI TAKE-AWAY</p>
         </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/supabase.js"></script>
+        <script src="js/panier.js"></script>
+        <script>
+            // Affichage spécifique de la page panier
+            document.addEventListener("DOMContentLoaded", () => {
+                afficherPanierPage();
+            });
+
+            function afficherPanierPage() {
+                const conteneur = document.getElementById("panier-conteneur");
+                let panier = JSON.parse(localStorage.getItem("minitakeaway_panier")) || [];
+
+                if (panier.length === 0) {
+                    conteneur.innerHTML = `
+                        <div style="background: white; text-align: center; padding: 50px 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                            <div style="font-size: 50px; margin-bottom: 20px;">🛒</div>
+                            <h3 style="margin-bottom: 15px; font-size: 22px;">Votre panier est actuellement vide</h3>
+                            <p style="color: var(--text); line-height: 1.6; margin-bottom: 30px;">
+                                Vous n'avez pas encore ajouté de délicieux repas à votre panier.
+                            </p>
+                            <a href="menu.html" class="btn-primary">Découvrir le menu</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let sousTotal = 0;
+                let htmlArticles = `<div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px;">
+                                    <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;">Articles choisis</h3>`;
+
+                panier.forEach((item, index) => {
+                    let totalArticle = item.prix * item.quantite;
+                    sousTotal += totalArticle;
+
+                    htmlArticles += `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                            <div>
+                                <h4 style="margin-bottom: 5px;">${item.nom}</h4>
+                                <p style="color: var(--text); font-size: 14px;">Prix unitaire : $${item.prix.toFixed(2)} x ${item.quantite}</p>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <span style="font-weight: bold; color: var(--primary); font-size: 18px;">$${totalArticle.toFixed(2)}</span>
+                                <button onclick="supprimerArticle(${index})" style="background: #ff6b6b; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">✕</button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                let frais = 1.50;
+                let totalGeneral = sousTotal + frais;
+
+                htmlArticles += `
+                    <div style="text-align: right;">
+                        <button onclick="viderPanier()" style="background: none; border: none; color: #ff6b6b; cursor: pointer; font-weight: bold;">Vider le panier</button>
+                    </div>
+                </div>
+
+                <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <h3 style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;">Total commande</h3>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: var(--text);">
+                        <span>Sous-total</span>
+                        <span>$${sousTotal.toFixed(2)}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; color: var(--text);">
+                        <span>Frais de service / Livraison</span>
+                        <span>$${frais.toFixed(2)}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 25px; font-weight: bold; font-size: 18px; color: var(--dark); border-top: 1px solid #eee; padding-top: 15px;">
+                        <span>Total</span>
+                        <span style="color: var(--primary);">$${totalGeneral.toFixed(2)}</span>
+                    </div>
+                    <a href="commande.html" class="btn-primary" style="display: block; text-align: center;">Valider la commande</a>
+                </div>`;
+
+                conteneur.innerHTML = htmlArticles;
+            }
+
+            function supprimerArticle(index) {
+                let panier = JSON.parse(localStorage.getItem("minitakeaway_panier")) || [];
+                panier.splice(index, 1);
+                localStorage.setItem("minitakeaway_panier", JSON.stringify(panier));
+                afficherPanierPage();
+                mettreAJourCompteurPanier();
+            }
+
+            function viderPanier() {
+                localStorage.removeItem("minitakeaway_panier");
+                afficherPanierPage();
+                mettreAJourCompteurPanier();
+            }
+        </script>
 
     </body>
 </html>
